@@ -9,6 +9,8 @@ const ReposList = ({ nomeUsuario }) => {
     const [repos, setRepos] = useState([]);
     // extra: criando um estate para estaCarregando com valor incial true
     const [estaCarregando, setEstaCarregando] = useState(true);
+
+    const [deuErro, setDeuErro] = useState(false);
     
 // em seguida, criar o useEffect (uma função, que recebe uma função imperativa, no caso, arrow function)
 // o useEffect será chamado qndo o componente for montado, logo o segundo argumento é um array (inicialmente vazio, mas depois recebe o parâmetro dinâmico)
@@ -31,6 +33,10 @@ const ReposList = ({ nomeUsuario }) => {
                 setRepos(resJson);
             }, 3000)
         })
+        .catch(e => {
+            setDeuErro(true);
+            console.log('erro detectado', deuErro);
+        })
     }, [nomeUsuario]);
 
 // agora, no return do useEffect, aplicamos .map ao arrey "repos", passando o parâmetro
@@ -45,6 +51,10 @@ const ReposList = ({ nomeUsuario }) => {
 // logo, podemos atribuir "repositorio.id" na prop key dentro da tag <li>
     return (
         <div className="container">
+        {/* renderizar mensagem de erro se deuErro for true */}
+        {deuErro && (
+            <h1>O nome de usuário digitado não foi encontrado. Tente novamente.</h1>
+        )}
         {/* o texto Carregando... só renderiza se estaCarregando for true, caso contrário renderiza a ul */}
         {estaCarregando ? (
             <h1>Carregando...</h1>
