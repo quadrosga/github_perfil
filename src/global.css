@@ -16,3 +16,22 @@
     --corPrincipal: #6ab04c;
     --corSecundaria: #111;
 }
+
+form {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    font-weight: bold;
+    color: var(--corSecundaria);
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 6px;
+    border: 2px solid var(--corPrincipal);
+}

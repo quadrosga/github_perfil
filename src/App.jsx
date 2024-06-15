@@ -9,11 +9,14 @@ function App() {
   const [formularioEstaVisivel, setFormularioEstaVisivel] = useState(true);
   // criando novo estado para tornar dinâmica a mudança do nomeUsuario
   const [nomeUsuario, setNomeUsuario] = useState('');
-
+  
   return (
     <>
     {/* criando input para inserir nome de usuário. onBlur faz requizição qndo o usuário sai do campo */}
-      <input type="text" onBlur={(e) => setNomeUsuario(e.target.value)} />
+      <form>
+        <label>Insira o nome de usuário do Github:</label>
+        <input type="text" onBlur={(e) => setNomeUsuario(e.target.value)} />
+      </form>
 
       {nomeUsuario.length > 4 && (
         <>
